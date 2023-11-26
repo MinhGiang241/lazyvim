@@ -33,11 +33,7 @@ local handlers = {
 -- require("lspconfig").myserver.setup({ handlers = handlers })
 
 cmp.setup({
-  snippet = {
-    expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body)
-    end,
-  },
+
   window = {
 
     documentation = cmp.config.window.bordered({
