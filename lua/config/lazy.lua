@@ -15,6 +15,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.editor.symbols-outline" },
     { import = "lazyvim.plugins.extras.editor.mini-files" },
     { import = "lazyvim.plugins.extras.dap.core" },
+    { import = "plugins.extras.lang.flutter" },
     -- { import = "lazyvim.plugins.extras.test.core" },
     -- { import = "lazyvim.plugins.extras.util.project" },
     { import = "lazyvim.plugins.extras.ui.alpha" },
