@@ -7,6 +7,9 @@ local discipline = require("user.discipline")
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
+-- Coding
+keymap.set("v","D","\"_d")
+
 -- Increment/decrement
 keymap.set("n", "+", "<C-a>")
 keymap.set("n", "-", "<C-x>")
