@@ -32,6 +32,12 @@ local handlers = {
 -- Do not forget to use the on_attach function
 -- require("lspconfig").myserver.setup({ handlers = handlers })
 
+-- Set commentstring for Kotlin files
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "kotlin",
+    command = "setlocal commentstring=//\\ %s"
+})
+
 cmp.setup({
 
   window = {

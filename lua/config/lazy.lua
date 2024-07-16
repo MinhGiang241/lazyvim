@@ -23,11 +23,11 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.formatting.prettier" },
     { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.lang.tailwind" },
-    { import = "lazyvim.plugins.extras.lang.omnisharp" },
+    -- { import = "lazyvim.plugins.extras.lang.omnisharp" },
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.coding.copilot" },
-    { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
-   -- { import = "lazyvim.plugins.extras.lang.kotlin"},
+    { import = "lazyvim.plugins.extras.util.mini-hipatterns" }, 
+    { import = "lazyvim.plugins.extras.lang.kotlin" },
     { import = "lazyvim.plugins.extras.lang.java"},
     -- {  = "lazyvim.plugins.extras.ui.mini-animate" },
     -- import/override with your plugins
@@ -57,6 +57,24 @@ require("lazy").setup({
         "tutor",
         "zipPlugin",
       },
+    },
+  },
+})
+
+require("neo-tree").setup({
+  filesystem = {
+    window = {
+      mappings = {
+        ["<leader>h"] = "image_wezterm", -- " or another map
+      },
+    },
+    commands = {
+      image_wezterm = function(state)
+        local node = state.tree:get_node()
+        if node.type == "file" then
+          require("image_preview").PreviewImage(node.path)
+        end
+      end,
     },
   },
 })
