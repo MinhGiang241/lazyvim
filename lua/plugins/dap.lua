@@ -23,7 +23,18 @@ return {
 
     for _,language in ipairs(js_based_languages) do 
       dap.configurations[language] = {
-        -- Debug signle nodejs file
+        -- Debug Nestjs
+        {
+            type = 'pwa-node',
+            request = 'launch',
+            name = 'Debug Nest Framework',
+            program = '${workspaceFolder}/src/main.ts',
+            cwd = '${workspaceFolder}',
+            sourceMaps = true,
+            protocol = 'inspector',
+            runtimeArgs = {'--nolazy', '-r', 'ts-node/register', '-r', 'tsconfig-paths/register'},
+        },
+                -- Debug signle nodejs file
         {
           type  = "pwa-node",
           request = "launch",
