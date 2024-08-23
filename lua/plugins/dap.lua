@@ -3,40 +3,57 @@ local js_based_languages = {
   "javascript",
   "typescriptreact",
   "javascriptreact",
-  "vue"
+  "vue",
 }
 
 return {
   "mfussenegger/nvim-dap",
-  config=function ()
+  config = function()
     local dap = require("dap")
     local Config = require("lazyvim.config")
-    vim.api.nvim_set_hl(0, "DapStoppedLine", {default= true, link="Visual"})
+    vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
 
     for name, sign in pairs(Config.icons.dap) do
-      sign = type(sign) == "table" and sign  or {sign}
+      sign = type(sign) == "table" and sign or { sign }
       vim.fn.sign_define(
         "Dap" .. name,
-        {text = sign[1], texthl = sign[2] or "DiagnosticInfo", linehl = sign[3], numhl = sign[3] }
+        { text = sign[1], texthl = sign[2] or "DiagnosticInfo", linehl = sign[3], numhl = sign[3] }
       )
     end
 
-    for _,language in ipairs(js_based_languages) do 
+    dap.adapters.coreclr = {
+      type = "executable",
+      command = "netcoredbg",
+      args = { "--interpreter=vscode" },
+    }
+
+    dap.configurations.cs = {
+      {
+        type = "coreclr",
+        name = "launch - netcoredbg",
+        request = "launch",
+        program = function()
+          return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
+        end,
+      },
+    }
+
+    for _, language in ipairs(js_based_languages) do
       dap.configurations[language] = {
         -- Debug Nestjs
         {
-            type = 'pwa-node',
-            request = 'launch',
-            name = 'Debug Nest Framework',
-            program = '${workspaceFolder}/src/main.ts',
-            cwd = '${workspaceFolder}',
-            sourceMaps = true,
-            protocol = 'inspector',
-            runtimeArgs = {'--nolazy', '-r', 'ts-node/register', '-r', 'tsconfig-paths/register'},
+          type = "pwa-node",
+          request = "launch",
+          name = "Debug Nest Framework",
+          program = "${workspaceFolder}/src/main.ts",
+          cwd = "${workspaceFolder}",
+          sourceMaps = true,
+          protocol = "inspector",
+          runtimeArgs = { "--nolazy", "-r", "ts-node/register", "-r", "tsconfig-paths/register" },
         },
-                -- Debug signle nodejs file
+        -- Debug signle nodejs file
         {
-          type  = "pwa-node",
+          type = "pwa-node",
           request = "launch",
           name = "Launch file",
           program = "${file}",
@@ -57,23 +74,23 @@ return {
           type = "pwa-chrome",
           request = "launch",
           name = "Launch & Debug Chrome",
-          url = function ()
+          url = function()
             local co = coroutine.running()
             return coroutine.create(function()
-                vim.ui.input({
+              vim.ui.input({
                 prompt = "Enter URL: ",
                 default = "http://localhost:3000",
-               }, function (url)
-                 if url == nil or url == "" then
-                   return
-                 else
-                    coroutine.resume(co, url)
-                 end
-               end )
-              end )
+              }, function(url)
+                if url == nil or url == "" then
+                  return
+                else
+                  coroutine.resume(co, url)
+                end
+              end)
+            end)
           end,
           webRoot = "${workspaceFolder}",
-          skipFiles = {"<node_internals>/**/*.js"},
+          skipFiles = { "<node_internals>/**/*.js" },
           protocol = "inspector",
           sourceMaps = true,
           userDataDir = false,
@@ -83,30 +100,30 @@ return {
           name = "------- ! launch.json config ! -------",
           type = "",
           request = "launch",
-        }
+        },
       }
     end
   end,
   keys = {
     {
       "<leader>dO",
-      function ()
+      function()
         require("dap").step_out()
       end,
       desc = "Step Out",
     },
     {
       "<leader>do",
-      function ()
+      function()
         require("dap").step_over()
       end,
       desc = "Step Over",
     },
     {
       "<leader>da",
-      function ()
+      function()
         if vim.fn.filereadable(".vscode/launch.json") then
-          local dap_vscode =  require("dap.ext.vscode")
+          local dap_vscode = require("dap.ext.vscode")
           dap_vscode.load_launchjs(nil, {
             ["pwa-node"] = js_based_languages,
             ["node"] = js_based_languages,
@@ -116,30 +133,30 @@ return {
         end
         require("dap").continue()
       end,
-      desc = "Run with Args"
-    }
+      desc = "Run with Args",
+    },
   },
   dependencies = {
     -- Install the vscode-js-debug adapter
     {
       "microsoft/vscode-js-debug",
       -- After install, build it and rename the dist directory to out
-      build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
+      build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
     },
     {
       "mxsdev/nvim-dap-vscode-js",
-      config = function ()
+      config = function()
         --@diagnostic disable-next-line: missing-fields
         require("dap-vscode-js").setup({
           -- Path of node executable , Default to $NODE_PATH, and then "node"
           -- node_path = "node"
-          
+
           -- Path to vscode-js-debug installation
           debugger_path = vim.fn.resolve(vim.fn.stdpath("data") .. "/lazy/vscode-js-debug"),
 
           -- Command to use to launch the debug server. Takes precedence over "node_path" and "debugger_path"
           -- debugger_cmd = {"js-debug-adapter"},
-          
+
           -- which adapters to register in nvim-dap
           adapters = {
             "chrome",
@@ -148,7 +165,7 @@ return {
             "pwa-msedge",
             "pwa-extensionHost",
             "node-terminal",
-            "node"
+            "node",
           },
 
           -- Path for file logging
@@ -158,12 +175,11 @@ return {
           -- Logging level for output to console. Set to false to disable consoleoutput,
           -- log_console_level = vim.log.levels.ERROR.
         })
-      end
-
+      end,
     },
     {
       "Joakker/lua-json5",
       build = "./install.sh",
-    }
-  }
+    },
+  },
 }
