@@ -43,7 +43,7 @@ require("lazy").setup({
     version = false, -- always use the latest git commit
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  install = { colorscheme = { "tokyonight", "habamax" } },
+  install = { colorscheme = { "catppuccin-mocha", "nighfly", "tokyonight", "habamax" } },
   checker = { enabled = true }, -- automatically check for plugin updates
   performance = {
     rtp = {
@@ -88,3 +88,15 @@ vim.keymap.set("n", ",w", function()
   }) or vim.api.nvim_get_current_win()
   vim.api.nvim_set_current_win(picked_window_id)
 end, { desc = "Pick a window" })
+
+-- Colorscheme
+vim.cmd([[colorscheme base16-catppuccin-mocha]])
+
+vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = "#FF5733" }) -- Màu viền cho toàn bộ cửa sổ Telescope
+vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = "#A3BE8C" }) -- Màu viền cho cửa sổ Prompt
+vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { fg = "#5E81AC" }) -- Màu viền cho cửa sổ Results
+vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { fg = "#BF616A" }) -- Màu viền cho cửa sổ Preview
+
+vim.api.nvim_set_hl(0, "MasonNormal", { fg = "#FFFFFF", bg = "#2E3440" }) -- Màu nền cho Mason
+vim.api.nvim_set_hl(0, "MasonBorder", { fg = "#88C0D0", bg = "NONE" }) -- Màu viền cho cửa sổ Mason
+vim.api.nvim_set_hl(0, "MasonHeading", { fg = "#A3BE8C", bg = "NONE" }) -- Màu tiêu đề

@@ -1,4 +1,4 @@
-return {
+themes = {
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   { "EdenEast/nightfox.nvim" },
   { "https://gitlab.com/bartekjaszczak/luma-nvim" },
@@ -11,7 +11,7 @@ return {
   { "slugbyte/lackluster.nvim" },
   { "uloco/bluloco.nvim" },
   { "ptdewey/darkearth-nvim" },
-  { "loganswartz/sunburn.nvim" },
+  -- { "loganswartz/sunburn.nvim" },
   { "samharju/synthweave.nvim" },
   { "svermeulen/text-to-colorscheme.nvim" },
   { "miikanissi/modus-themes.nvim" },
@@ -35,7 +35,7 @@ return {
   },
   { "zootedb0t/citruszest.nvim" },
   { "sekke276/dark_flat.nvim" },
-  { "sonjiku/yawnc.nvim" },
+  -- { "sonjiku/yawnc.nvim" },
   { "dasupradyumna/midnight.nvim" },
   { "maxmx03/fluoromachine.nvim" },
   { "nyngwang/nvimgelion" },
@@ -86,19 +86,18 @@ return {
   { "sainnhe/everforest" },
   { "sainnhe/gruvbox-material" },
   { "navarasu/onedark.nvim" },
-  {
-    url = "https://codeberg.org/jthvai/lavender.nvim",
-    branch = "stable", -- versioned tags + docs updates from main
-    lazy = false,
-  },
+  -- {
+  --   url = "https://codeberg.org/jthvai/lavender.nvim",
+  --   branch = "stable", -- versioned tags + docs updates from main
+  --   lazy = false,
+  -- },
   { "ishan9299/nvim-solarized-lua" },
-  { "svrana/neosolarized.nvim" },
+  -- { "svrana/neosolarized.nvim" },
   { "Tsuzat/NeoSolarized.nvim" },
   { "shaunsingh/nord.nvim" },
   { "AlexvZyl/nordic.nvim" },
   { "andersevenrud/nordic.nvim" },
   { "fenetikm/falcon" },
-  { "RRethy/base16-nvim" },
   { "savq/melange-nvim" },
   { "ofirgall/ofirkai.nvim", branch = "exp" },
   { "tanvirtin/monokai.nvim" },
@@ -118,7 +117,7 @@ return {
   { "rockerBOO/boo-colorscheme-nvim" },
   { "glepnir/zephyr-nvim" },
   { "nvim-treesitter/nvim-treesitter" },
-  { "mhartington/oceanic-next" },
+  -- { "mhartington/oceanic-next" },
   { "kyazdani42/blue-moon" },
   { "nyoom-engineering/oxocarbon.nvim" },
   { "sainnhe/sonokai" },
@@ -134,3 +133,5 @@ return {
   { "Abstract-IDE/Abstract-cs" },
   { "sontungexpt/witch" },
 }
+
+return { { "RRethy/base16-nvim" } }
