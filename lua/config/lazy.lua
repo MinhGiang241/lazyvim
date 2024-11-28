@@ -120,13 +120,13 @@ local border = {
 }
 
 -- LSP settings (for overriding per client)
-local handlers = {
-  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
-  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
-}
-
+-- local handlers = {
+--   ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+--   ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+-- }
+--
 -- Do not forget to use the on_attach function
-require("lspconfig").myserver.setup({ handlers = handlers })
+-- require("lspconfig").myserver.setup({ handlers = handlers })
 
 vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = "#FF5733" }) -- Màu viền cho toàn bộ cửa sổ Telescope
 vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = "#A3BE8C" }) -- Màu viền cho cửa sổ Prompt
