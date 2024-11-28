@@ -1,6 +1,12 @@
 -- projects
 local wk = require("which-key")
-wk.register({ p = { "<cmd>Telescope projects<cr>", "projects", noremap = false } }, { prefix = "<leader>" })
+wk.add(
+  { "<leader>p", "<cmd>Telescope projects<cr>", desc = "Find File", mode = "n" }
+  --   {
+  --   p = { "<cmd>Telescope projects<cr>", "projects", noremap = false },
+  --   prefix = "<leader>",
+  -- }
+)
 
 return {
   {

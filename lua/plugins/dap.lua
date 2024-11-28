@@ -40,6 +40,77 @@ return {
 
     for _, language in ipairs(js_based_languages) do
       dap.configurations[language] = {
+        --Debug typescript
+        {
+          type = "pwa-node",
+          request = "launch",
+          name = "Typescript debug",
+          skipFiles = {
+            "<node_internals>/**",
+          },
+          args = { "${file}" },
+          sourceMaps = true,
+          protocol = "inspector",
+          program = "${file}",
+          preLaunchTask = "tsc: build - tsconfig.json",
+          runtimeArgs = { "--nolazy", "-r", "ts-node/register", "-r", "tsconfig-paths/register" },
+          cwd = "${workspaceFolder}",
+        },
+        {
+          type = "pwa-node",
+          request = "launch",
+          name = "Debug TS ",
+          program = "${workspaceFolder}/index.ts",
+          cwd = "${workspaceFolder}",
+          sourceMaps = true,
+          protocol = "inspector",
+          runtimeArgs = { "--nolazy", "-r", "ts-node/register", "-r", "tsconfig-paths/register" },
+        },
+        {
+          type = "pwa-node",
+          request = "launch",
+          name = "Launch Current File (pwa-node with ts-node)",
+          cwd = vim.fn.getcwd(),
+          runtimeArgs = { "--loader", "ts-node/esm", "--no-warnings" },
+          runtimeExecutable = "node",
+          args = { "${file}" },
+          sourceMaps = true,
+          protocol = "inspector",
+          skipFiles = { "<node_internals>/**", "node_modules/**" },
+          resolveSourceMapLocations = {
+            "${workspaceFolder}/**",
+            "!**/node_modules/**",
+          },
+        },
+        {
+          type = "pwa-chrome",
+          request = "attach",
+          name = "Attach Program (pwa-chrome = { port: 9222 })",
+          program = "${file}",
+          cwd = vim.fn.getcwd(),
+          sourceMaps = true,
+          port = 9222,
+          webRoot = "${workspaceFolder}",
+        },
+        {
+          type = "pwa-node",
+          request = "launch",
+          name = "Launch Current File (Typescript)",
+          runtimeArgs = { "--loader", "ts-node/esm" },
+          cwd = "${workspaceFolder}",
+          -- runtimeArgs = { "--loader=ts-node/esm" },
+          args = { "${file}" },
+          runtimeExecutable = "node",
+          -- args = { '${file}' },
+          sourceMaps = true,
+          protocol = "inspector",
+          outFiles = { "${workspaceFolder}/**/**/*", "!**/node_modules/**" },
+          skipFiles = { "<node_internals>/**", "node_modules/**" },
+          resolveSourceMapLocations = {
+            "${workspaceFolder}/**",
+            "!**/node_modules/**",
+          },
+        },
         -- Debug Nestjs
         {
           type = "pwa-node",
@@ -119,6 +190,15 @@ return {
           name = "------- ! launch.json config ! -------",
           type = "",
           request = "launch",
+        },
+        {
+          name = "Next.js: debug server-side",
+          type = "pwa-node",
+          request = "launch",
+          cwd = "${workspaceFolder}",
+          runtimeExecutable = "npm",
+          runtimeArgs = { "run-script", "dev" },
+          sourceMaps = true,
         },
       }
     end
