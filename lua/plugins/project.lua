@@ -2,11 +2,13 @@
 local wk = require("which-key")
 wk.add(
   { "<leader>p", "<cmd>Telescope projects<cr>", desc = "Find File", mode = "n" }
+
   --   {
   --   p = { "<cmd>Telescope projects<cr>", "projects", noremap = false },
   --   prefix = "<leader>",
   -- }
 )
+wk.add({ "<leader>sh", "<cmd>Telescope oldfiles<cr>", desc = "Recent Files", mode = "n" })
 
 return {
   {
