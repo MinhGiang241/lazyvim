@@ -122,6 +122,25 @@ return {
           protocol = "inspector",
           runtimeArgs = { "--nolazy", "-r", "ts-node/register", "-r", "tsconfig-paths/register" },
         },
+        {
+          type = "pwa-node",
+          request = "launch",
+          name = "Launch Current File (Typescript)",
+          runtimeArgs = { "--loader", "ts-node/esm" },
+          cwd = "${workspaceFolder}",
+          -- runtimeArgs = { "--loader=ts-node/esm" },
+          args = { "${file}" },
+          runtimeExecutable = "node",
+          -- args = { '${file}' },
+          sourceMaps = true,
+          protocol = "inspector",
+          outFiles = { "${workspaceFolder}/**/**/*", "!**/node_modules/**" },
+          skipFiles = { "<node_internals>/**", "node_modules/**" },
+          resolveSourceMapLocations = {
+            "${workspaceFolder}/**",
+            "!**/node_modules/**",
+          },
+        },
         -- Debug signle nodejs file
         {
           type = "pwa-node",
