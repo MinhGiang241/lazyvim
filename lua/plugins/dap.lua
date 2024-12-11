@@ -36,6 +36,12 @@ return {
           return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
         end,
       },
+      {
+        type = "coreclr",
+        name = "Attach - NetCoreDbg",
+        request = "attach",
+        processId = require("dap.utils").pick_process, --"${command:pickProcess}",
+      },
     }
 
     for _, language in ipairs(js_based_languages) do
