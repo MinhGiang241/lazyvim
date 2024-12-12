@@ -36,26 +36,17 @@ return {
           return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
         end,
       },
+      {
+        type = "coreclr",
+        name = "Attach - NetCoreDbg",
+        request = "attach",
+        processId = require("dap.utils").pick_process, --"${command:pickProcess}",
+      },
     }
 
     for _, language in ipairs(js_based_languages) do
       dap.configurations[language] = {
         --Debug typescript
-        {
-          type = "pwa-node",
-          request = "launch",
-          name = "Typescript debug",
-          skipFiles = {
-            "<node_internals>/**",
-          },
-          args = { "${file}" },
-          sourceMaps = true,
-          protocol = "inspector",
-          program = "${file}",
-          preLaunchTask = "tsc: build - tsconfig.json",
-          runtimeArgs = { "--nolazy", "-r", "ts-node/register", "-r", "tsconfig-paths/register" },
-          cwd = "${workspaceFolder}",
-        },
         {
           type = "pwa-node",
           request = "launch",
@@ -186,11 +177,6 @@ return {
           userDataDir = false,
         },
         -- Divider for the launch.json derived config
-        {
-          name = "------- ! launch.json config ! -------",
-          type = "",
-          request = "launch",
-        },
         {
           name = "Next.js: debug server-side",
           type = "pwa-node",
