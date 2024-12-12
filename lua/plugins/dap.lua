@@ -50,21 +50,6 @@ return {
         {
           type = "pwa-node",
           request = "launch",
-          name = "Typescript debug",
-          skipFiles = {
-            "<node_internals>/**",
-          },
-          args = { "${file}" },
-          sourceMaps = true,
-          protocol = "inspector",
-          program = "${file}",
-          preLaunchTask = "tsc: build - tsconfig.json",
-          runtimeArgs = { "--nolazy", "-r", "ts-node/register", "-r", "tsconfig-paths/register" },
-          cwd = "${workspaceFolder}",
-        },
-        {
-          type = "pwa-node",
-          request = "launch",
           name = "Debug TS ",
           program = "${workspaceFolder}/index.ts",
           cwd = "${workspaceFolder}",
@@ -192,11 +177,6 @@ return {
           userDataDir = false,
         },
         -- Divider for the launch.json derived config
-        {
-          name = "------- ! launch.json config ! -------",
-          type = "",
-          request = "launch",
-        },
         {
           name = "Next.js: debug server-side",
           type = "pwa-node",
