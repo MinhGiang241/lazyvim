@@ -7,9 +7,15 @@
     "snippets": [
       {
         "language": [
-          "csharp"
+          "cs"
         ],
         "path": "./csharp.json"
+      },
+      {
+        "language": [
+          "html"
+        ],
+        "path": "./html.json"
       }
     ]
   }

@@ -19,22 +19,22 @@ return {
       local i = ls.insert_node
       local cmp = require("cmp")
 
-      ls.add_snippets("all", {
-        s("hi", {
-          t("hello, world"),
-        }),
-      })
+      -- ls.add_snippets("all", {
+      --   s("hi", {
+      --     t("hello, world"),
+      --   }),
+      -- })
       -- Thêm snippet cho C#
-      ls.add_snippets("cs", {
-        s("summary", {
-          t("/// <summary>"),
-          t({ "", "/// " }),
-          i(1, "Description of the method/class."),
-          t({ "", "/// </summary>" }),
-          t({ "", "" }),
-          i(0),
-        }),
-      })
+      -- ls.add_snippets("cs", {
+      --   s("summary", {
+      --     t("/// <summary>"),
+      --     t({ "", "/// " }),
+      --     i(1, "Description of the method/class."),
+      --     t({ "", "/// </summary>" }),
+      --     t({ "", "" }),
+      --     i(0),
+      --   }),
+      -- })
       -- Cấu hình nvim-cmp
       cmp.setup({
         snippet = {

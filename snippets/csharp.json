@@ -1,6 +1,6 @@
 {
   "summary": {
-    "prefix": "summary",
+    "prefix": "///",
     "body": [
       "/// <summary>",
       "/// ${1:Description of the method or class.}",

@@ -64,6 +64,9 @@ require("lazy").setup({
   },
 })
 
+-- Colorscheme
+vim.cmd([[colorscheme base16-tokyo-city-terminal-dark]])
+
 require("neo-tree").setup({
   filesystem = {
     window = {
@@ -91,14 +94,6 @@ vim.keymap.set("n", ",w", function()
   vim.api.nvim_set_current_win(picked_window_id)
 end, { desc = "Pick a window" })
 
--- Colorscheme
-vim.cmd([[colorscheme base16-tokyo-city-terminal-dark]])
-
-local ls = require("luasnip")
-
-ls.add_snippets("cs", {
-  ls.parser.parse_snippet("///", "/// <summary>\n/// ${1:Description of the method/class.}\n/// </summary>\n${0}"),
-})
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
   border = "rounded", -- Chọn viền hình tròn cho popup
 })
@@ -114,8 +109,9 @@ vim.api.nvim_set_hl(0, "MasonNormal", { fg = "#FFFFFF", bg = "#2E3440" }) -- Mà
 vim.api.nvim_set_hl(0, "MasonBorder", { fg = "#88C0D0", bg = "NONE" }) -- Màu viền cho cửa sổ Mason
 vim.api.nvim_set_hl(0, "MasonHeading", { fg = "#A3BE8C", bg = "NONE" }) -- Màu tiêu đề
 vim.api.nvim_set_hl(0, "LspInfoBorder", { fg = "#FFFFFF" })
-vim.api.nvim_set_hl(0, "LspInfoNormal", { bg = "#2E3440" })
+-- vim.api.nvim_set_hl(0, "LspInfoNormal", { bg = "#2E3440" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#2E3440" })
+-- vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#FFFFFF" })
 vim.api.nvim_set_hl(0, "Pmenu", { bg = "#2E3440" })
 
 local cmp = require("cmp")
