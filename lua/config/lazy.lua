@@ -98,33 +98,10 @@ local ls = require("luasnip")
 ls.add_snippets("cs", {
   ls.parser.parse_snippet("summary", "/// <summary>\n/// ${1:Description of the method/class.}\n/// </summary>\n${0}"),
 })
-
-vim.diagnostic.config({
-  float = {
-    border = "rounded", -- Kiểu viền: 'none', 'single', 'double', 'rounded', 'solid', 'shadow'
-  },
-})
-
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "rounded", -- Kiểu viền: 'none', 'single', 'double', 'rounded', 'solid', 'shadow'
+  border = "rounded", -- Chọn viền hình tròn cho popup
 })
 
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-  border = "rounded", -- Kiểu viền: 'none', 'single', 'double', 'rounded', 'solid', 'shadow'
-})
-
-local border = {
-  { "🭽", "FloatBorder" },
-  { "▔", "FloatBorder" },
-  { "🭾", "FloatBorder" },
-  { "▕", "FloatBorder" },
-  { "🭿", "FloatBorder" },
-  { "▁", "FloatBorder" },
-  { "🭼", "FloatBorder" },
-  { "▏", "FloatBorder" },
-}
-
-vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = "#FFFFFF" }) -- Màu viền cho toàn bộ cửa sổ Telescope
 vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = "#000000", fg = "#4d99e6" }) -- Màu viền cho cửa sổ Prompt
 vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bg = "#000000", fg = "#FFFFFF" }) -- Màu viền cho cửa sổ Prompt
 vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { bg = "#000000", fg = "#4d99e6" }) -- Màu viền cho cửa sổ Results
@@ -135,8 +112,10 @@ vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { bg = "#000000", fg = "#FFFFFF"
 vim.api.nvim_set_hl(0, "MasonNormal", { fg = "#FFFFFF", bg = "#2E3440" }) -- Màu nền cho Mason
 vim.api.nvim_set_hl(0, "MasonBorder", { fg = "#88C0D0", bg = "NONE" }) -- Màu viền cho cửa sổ Mason
 vim.api.nvim_set_hl(0, "MasonHeading", { fg = "#A3BE8C", bg = "NONE" }) -- Màu tiêu đề
-
+vim.api.nvim_set_hl(0, "LspInfoBorder", { fg = "#FFFFFF" })
 vim.api.nvim_set_hl(0, "LspInfoNormal", { bg = "#2E3440" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#2E3440" })
+vim.api.nvim_set_hl(0, "Pmenu", { bg = "#2E3440" })
 
 local cmp = require("cmp")
 cmp.setup({

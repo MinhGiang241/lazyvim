@@ -42,7 +42,7 @@ keymap.set("n", "sl", "<C-w>l")
 keymap.set("n", "tt", "<cmd>ToggleTerm<cr>", opts)
 keymap.set("t", "<Esc>", [[<C-\><C-n>]], opts)
 for i = 1, 10 do
-  keymap.set("n", "tu" .. i, "<cmd>ToggleTerm " .. i .. "<cr>", opts)
+  keymap.set("n", "tt" .. i, "<cmd>ToggleTerm " .. i .. "<cr>", opts)
 end
 
 -- Diagnostics
