@@ -25,17 +25,36 @@ return {
         }),
       })
       -- Thêm snippet cho C#
-      -- ls.add_snippets("cs", {
-      --   s("summary", {
-      --     t("/// <summary>"),
-      --     t({ "", "/// " }),
-      --     i(1, "Description of the method/class."),
-      --     t({ "", "/// </summary>" }),
-      --     t({ "", "" }),
-      --     i(0),
-      --   }),
-      -- })
+      ls.add_snippets("cs", {
+        s("summary", {
+          t("/// <summary>"),
+          t({ "", "/// " }),
+          i(1, "Description of the method/class."),
+          t({ "", "/// </summary>" }),
+          t({ "", "" }),
+          i(0),
+        }),
+      })
       -- Cấu hình nvim-cmp
+      cmp.setup({
+        snippet = {
+          expand = function(args)
+            ls.lsp_expand(args.body) -- Dùng để mở rộng snippet
+          end,
+        },
+        sources = {
+          { name = "luasnip" }, -- Thêm nguồn LuaSnip vào nvim-cmp
+        },
+        mapping = cmp.mapping.preset.insert({
+          ["<Tab>"] = cmp.mapping.select_next_item(),
+          ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+          ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Xác nhận lựa chọn
+        }),
+
+        -- completion = {
+        --   autocomplete = { cmp.config.context.menu_completion }, -- Mở hoàn thành tự động
+        -- },
+      })
     end,
   },
   {

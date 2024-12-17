@@ -25,6 +25,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.tailwind" },
     { import = "lazyvim.plugins.extras.lang.omnisharp" },
     { import = "lazyvim.plugins.extras.lang.json" },
+    { import = "lazyvim.plugins.extras.coding.luasnip" },
     -- { import = "lazyvim.plugins.extras.coding.copilot" },
     { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
@@ -96,18 +97,18 @@ vim.cmd([[colorscheme base16-tokyo-city-terminal-dark]])
 local ls = require("luasnip")
 
 ls.add_snippets("cs", {
-  ls.parser.parse_snippet("summary", "/// <summary>\n/// ${1:Description of the method/class.}\n/// </summary>\n${0}"),
+  ls.parser.parse_snippet("///", "/// <summary>\n/// ${1:Description of the method/class.}\n/// </summary>\n${0}"),
 })
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
   border = "rounded", -- Chọn viền hình tròn cho popup
 })
 
 vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = "#000000", fg = "#4d99e6" }) -- Màu viền cho cửa sổ Prompt
-vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bg = "#000000", fg = "#FFFFFF" }) -- Màu viền cho cửa sổ Prompt
+vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bg = "#000000", fg = "#fff000" }) -- Màu viền cho cửa sổ Prompt
 vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { bg = "#000000", fg = "#4d99e6" }) -- Màu viền cho cửa sổ Results
-vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { bg = "#000000", fg = "#FFFFFF" }) -- Màu viền cho title  Results
+vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { bg = "#000000", fg = "#fff000" }) -- Màu viền cho title  Results
 vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { bg = "#000000", fg = "#4d99e6" }) -- Màu viền cho cửa sổ Preview
-vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { bg = "#000000", fg = "#FFFFFF" }) -- Màu viền cho cửa sổ Preview
+vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { bg = "#000000", fg = "#fff000" }) -- Màu viền cho cửa sổ Preview
 
 vim.api.nvim_set_hl(0, "MasonNormal", { fg = "#FFFFFF", bg = "#2E3440" }) -- Màu nền cho Mason
 vim.api.nvim_set_hl(0, "MasonBorder", { fg = "#88C0D0", bg = "NONE" }) -- Màu viền cho cửa sổ Mason
