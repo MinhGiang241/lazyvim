@@ -59,7 +59,9 @@ wk.add(
   --   prefix = "<leader>",
   -- }
 )
-wk.add({ "<leader>sh", "<cmd>Telescope oldfiles<cr>", desc = "Recent Files", mode = "n" })
+wk.add({ "<leader>so", "<cmd>FzfLua oldfiles<cr>", desc = "Recent Files", mode = "n" })
+
+wk.add({ "<leader>sh", "<cmd>FzfLua oldfiles<cr>", desc = "Help Doc", mode = "n" })
 
 wk.add({ "<leader>cp", "<cmd>CccPick<cr>", desc = "Pick color", mode = "n" })
 

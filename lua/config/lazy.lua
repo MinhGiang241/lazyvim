@@ -123,3 +123,12 @@ vim.api.nvim_set_hl(0, "CmpDocBorder", { fg = "#FFFFFF" })
 
 -- color menu autocompletion border
 vim.api.nvim_set_hl(0, "CmpMenuBorder", { fg = "#FFFFFF" })
+
+vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = "#000000", fg = "#4d99e6" }) -- Màu viền cho cửa sổ Prompt
+vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bg = "#000000", fg = "#fff000" }) -- Màu viền cho cửa sổ Prompt
+vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { bg = "#000000", fg = "#4d99e6" }) -- Màu viền cho cửa sổ Results
+vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { bg = "#000000", fg = "#fff000" }) -- Màu viền cho title  Results
+vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { bg = "#000000", fg = "#4d99e6" }) -- Màu viền cho cửa sổ Preview
+vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { bg = "#000000", fg = "#fff000" }) -- Màu viền cho cửa sổ Preview
+vim.api.nvim_set_hl(0, "MasonNormal", { fg = "#FFFFFF", bg = "#0c190c" }) -- Màu nền cho Mason
+vim.api.nvim_set_hl(0, "MasonBorder", { fg = "#88C0D0", bg = "NONE" }) -- Màu viền cho cửa sổ Mason
