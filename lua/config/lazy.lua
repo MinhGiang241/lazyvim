@@ -11,13 +11,11 @@ require("lazy").setup({
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins", opts = { colorscheme = "base16-tokyo-city-terminal-dark" } },
     -- import any extras modules here
-    -- { import = "lazyvim.plugins.extras.ui.edgy" },
-    -- { import = "lazyvim.plugins.extras.editor.symbols-outline" },
+    { import = "lazyvim.plugins.extras.editor.outline" },
     { import = "lazyvim.plugins.extras.editor.mini-files" },
+    { import = "lazyvim.plugins.extras.editor.aerial" },
     { import = "lazyvim.plugins.extras.dap.core" },
     { import = "plugins.extras.lang.flutter" },
-    -- { import = "lazyvim.plugins.extras.test.core" },
-    -- { import = "lazyvim.plugins.extras.util.project" },
     { import = "lazyvim.plugins.extras.ui.alpha" },
     { import = "lazyvim.plugins.extras.linting.eslint" },
     { import = "lazyvim.plugins.extras.formatting.prettier" },
@@ -26,17 +24,20 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.omnisharp" },
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.coding.luasnip" },
+    { import = "lazyvim.plugins.extras.editor.fzf" },
+    { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
+    { import = "lazyvim.plugins.extras.coding.mini-surround" },
+    { import = "lazyvim.plugins.extras.lang.java" },
+    { import = "lazyvim.plugins.extras.coding.neogen" },
+    -- { import = "lazyvim.plugins.extras.ui.edgy" },
+    -- { import = "lazyvim.plugins.extras.test.core" },
+    -- { import = "lazyvim.plugins.extras.util.project" },
     -- { import = "lazyvim.plugins.extras.coding.blink" },
     -- { import = "lazyvim.plugins.extras.editor.telescope" },
     -- { import = "lazyvim.plugins.extras.ui.edgy" },
-    { import = "lazyvim.plugins.extras.editor.fzf" },
     -- { import = "lazyvim.plugins.extras.coding.copilot" },
-    { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
-    { import = "lazyvim.plugins.extras.coding.mini-surround" },
     -- { import = "lazyvim.plugins.extras.lang.kotlin" },
-    { import = "lazyvim.plugins.extras.lang.java" },
     -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
-    { import = "lazyvim.plugins.extras.coding.mini-surround" },
     -- import/override with your plugins
     { import = "plugins" },
   },
@@ -67,9 +68,6 @@ require("lazy").setup({
     },
   },
 })
-
--- Colorscheme
--- vim.cmd([[colorscheme base16-tokyo-city-terminal-dark]])
 
 require("neo-tree").setup({
   filesystem = {
@@ -125,10 +123,3 @@ vim.api.nvim_set_hl(0, "CmpDocBorder", { fg = "#FFFFFF" })
 
 -- color menu autocompletion border
 vim.api.nvim_set_hl(0, "CmpMenuBorder", { fg = "#FFFFFF" })
-
--- vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = "#000000", fg = "#4d99e6" }) -- Màu viền cho cửa sổ Prompt
--- vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bg = "#000000", fg = "#fff000" }) -- Màu viền cho cửa sổ Prompt
--- vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { bg = "#000000", fg = "#4d99e6" }) -- Màu viền cho cửa sổ Results
--- vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { bg = "#000000", fg = "#fff000" }) -- Màu viền cho title  Results
--- vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { bg = "#000000", fg = "#4d99e6" }) -- Màu viền cho cửa sổ Preview
--- vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { bg = "#000000", fg = "#fff000" }) -- Màu viền cho cửa sổ Preview

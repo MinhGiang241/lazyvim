@@ -1,5 +1,5 @@
-return {  
-   { "Hoffs/omnisharp-extended-lsp.nvim", lazy = true },
+return {
+  { "Hoffs/omnisharp-extended-lsp.nvim", lazy = true },
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
@@ -10,21 +10,21 @@ return {
   },
 
   {
-  "stevearc/conform.nvim",
-  optional = true,
-  opts = {
-    formatters_by_ft = {
-      cs = { "omnisharp" },
-    },
-    formatters = {
-      omnisharp = {
-        command = "dotnet-format",
-        args = { "--stdin" },
-        stdin = true,
+    "stevearc/conform.nvim",
+    optional = true,
+    opts = {
+      formatters_by_ft = {
+        cs = { "omnisharp" },
+      },
+      formatters = {
+        omnisharp = {
+          command = "dotnet-format",
+          args = { "--stdin" },
+          stdin = true,
+        },
       },
     },
   },
-},
   {
     "neovim/nvim-lspconfig",
     opts = {
