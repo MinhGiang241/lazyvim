@@ -26,6 +26,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.omnisharp" },
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.coding.luasnip" },
+    -- { import = "lazyvim.plugins.extras.coding.blink" },
     -- { import = "lazyvim.plugins.extras.editor.telescope" },
     -- { import = "lazyvim.plugins.extras.ui.edgy" },
     { import = "lazyvim.plugins.extras.editor.fzf" },
@@ -101,14 +102,7 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
   border = "rounded", -- Chọn viền hình tròn cho popup
 })
 
-vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = "#000000", fg = "#4d99e6" }) -- Màu viền cho cửa sổ Prompt
-vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bg = "#000000", fg = "#fff000" }) -- Màu viền cho cửa sổ Prompt
-vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { bg = "#000000", fg = "#4d99e6" }) -- Màu viền cho cửa sổ Results
-vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { bg = "#000000", fg = "#fff000" }) -- Màu viền cho title  Results
-vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { bg = "#000000", fg = "#4d99e6" }) -- Màu viền cho cửa sổ Preview
-vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { bg = "#000000", fg = "#fff000" }) -- Màu viền cho cửa sổ Preview
-
-vim.api.nvim_set_hl(0, "MasonNormal", { fg = "#FFFFFF", bg = "#2E3440" }) -- Màu nền cho Mason
+vim.api.nvim_set_hl(0, "MasonNormal", { fg = "#FFFFFF", bg = "#0c190c" }) -- Màu nền cho Mason
 vim.api.nvim_set_hl(0, "MasonBorder", { fg = "#88C0D0", bg = "NONE" }) -- Màu viền cho cửa sổ Mason
 vim.api.nvim_set_hl(0, "MasonHeading", { fg = "#A3BE8C", bg = "NONE" }) -- Màu tiêu đề
 vim.api.nvim_set_hl(0, "LspInfoBorder", { fg = "#FFFFFF" })
@@ -116,7 +110,7 @@ vim.api.nvim_set_hl(0, "LspInfoBorder", { fg = "#FFFFFF" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#0c190c" })
 -- vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#FFFFFF" })
 vim.api.nvim_set_hl(0, "Pmenu", { bg = "#0c190c" })
-vim.api.nvim_set_hl(0, "LineNr", { bg = "#0c190c" })
+vim.api.nvim_set_hl(0, "LineNr", { bg = "NONE" })
 --TroubleIndentWs links to LineNr
 local cmp = require("cmp")
 cmp.setup({
@@ -131,3 +125,10 @@ vim.api.nvim_set_hl(0, "CmpDocBorder", { fg = "#FFFFFF" })
 
 -- color menu autocompletion border
 vim.api.nvim_set_hl(0, "CmpMenuBorder", { fg = "#FFFFFF" })
+
+-- vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = "#000000", fg = "#4d99e6" }) -- Màu viền cho cửa sổ Prompt
+-- vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bg = "#000000", fg = "#fff000" }) -- Màu viền cho cửa sổ Prompt
+-- vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { bg = "#000000", fg = "#4d99e6" }) -- Màu viền cho cửa sổ Results
+-- vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { bg = "#000000", fg = "#fff000" }) -- Màu viền cho title  Results
+-- vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { bg = "#000000", fg = "#4d99e6" }) -- Màu viền cho cửa sổ Preview
+-- vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { bg = "#000000", fg = "#fff000" }) -- Màu viền cho cửa sổ Preview
