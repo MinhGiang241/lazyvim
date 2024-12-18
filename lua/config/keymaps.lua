@@ -52,7 +52,7 @@ end)
 
 -- projects
 wk.add(
-  { "<leader>p", "<cmd>Telescope projects<cr>", desc = "Find File", mode = "n" }
+  { "<leader>p", "<cmd>Telescope projects<cr>", desc = "Find Projects", mode = "n" }
 
   --   {
   --   p = { "<cmd>Telescope projects<cr>", "projects", noremap = false },
