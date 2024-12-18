@@ -9,7 +9,7 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
-    { "LazyVim/LazyVim", import = "lazyvim.plugins", opts = { colorscheme = "tokyonight-night" } },
+    { "LazyVim/LazyVim", import = "lazyvim.plugins", opts = { colorscheme = "base16-tokyo-city-terminal-dark" } },
     -- import any extras modules here
     -- { import = "lazyvim.plugins.extras.ui.edgy" },
     -- { import = "lazyvim.plugins.extras.editor.symbols-outline" },
@@ -26,6 +26,9 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.omnisharp" },
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.coding.luasnip" },
+    -- { import = "lazyvim.plugins.extras.editor.telescope" },
+    -- { import = "lazyvim.plugins.extras.ui.edgy" },
+    { import = "lazyvim.plugins.extras.editor.fzf" },
     -- { import = "lazyvim.plugins.extras.coding.copilot" },
     { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
@@ -65,7 +68,7 @@ require("lazy").setup({
 })
 
 -- Colorscheme
-vim.cmd([[colorscheme base16-tokyo-city-terminal-dark]])
+-- vim.cmd([[colorscheme base16-tokyo-city-terminal-dark]])
 
 require("neo-tree").setup({
   filesystem = {
@@ -110,10 +113,11 @@ vim.api.nvim_set_hl(0, "MasonBorder", { fg = "#88C0D0", bg = "NONE" }) -- Màu v
 vim.api.nvim_set_hl(0, "MasonHeading", { fg = "#A3BE8C", bg = "NONE" }) -- Màu tiêu đề
 vim.api.nvim_set_hl(0, "LspInfoBorder", { fg = "#FFFFFF" })
 -- vim.api.nvim_set_hl(0, "LspInfoNormal", { bg = "#2E3440" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#2E3440" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#0c190c" })
 -- vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#FFFFFF" })
-vim.api.nvim_set_hl(0, "Pmenu", { bg = "#2E3440" })
-
+vim.api.nvim_set_hl(0, "Pmenu", { bg = "#0c190c" })
+vim.api.nvim_set_hl(0, "LineNr", { bg = "#0c190c" })
+--TroubleIndentWs links to LineNr
 local cmp = require("cmp")
 cmp.setup({
   window = {

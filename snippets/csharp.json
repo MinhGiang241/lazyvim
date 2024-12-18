@@ -7,5 +7,10 @@
       "/// </summary>"
     ],
     "description": "Create a C# XML comment summary"
+  },
+  "public": {
+    "prefix": "pu",
+    "body": ["public"],
+    "description": "public"
   }
 }
