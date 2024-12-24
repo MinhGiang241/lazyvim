@@ -1,0 +1,16 @@
+{
+  "summary": {
+    "prefix": "///",
+    "body": [
+      "/// <summary>",
+      "/// ${1:Description of the method or class.}",
+      "/// </summary>"
+    ],
+    "description": "Create a C# XML comment summary"
+  },
+  "public": {
+    "prefix": "pu",
+    "body": ["public"],
+    "description": "public"
+  }
+}
