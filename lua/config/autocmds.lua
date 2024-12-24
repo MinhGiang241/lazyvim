@@ -36,8 +36,8 @@ local handlers = {
 
 -- Set commentstring for Kotlin files
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "kotlin",
-  command = "setlocal commentstring=//\\ %s",
+    pattern = "kotlin",
+    command = "setlocal commentstring=//\\ %s"
 })
 
 cmp.setup({

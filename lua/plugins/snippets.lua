@@ -19,11 +19,11 @@ local snippets = {
       local i = ls.insert_node
       local cmp = require("cmp")
 
-      -- ls.add_snippets("all", {
-      --   s("hi", {
-      --     t("hello, world"),
-      --   }),
-      -- })
+      ls.add_snippets("all", {
+        s("hi", {
+          t("hello, world"),
+        }),
+      })
       -- Thêm snippet cho C#
       -- ls.add_snippets("cs", {
       --   s("summary", {
@@ -36,25 +36,6 @@ local snippets = {
       --   }),
       -- })
       -- Cấu hình nvim-cmp
-      cmp.setup({
-        snippet = {
-          expand = function(args)
-            ls.lsp_expand(args.body) -- Dùng để mở rộng snippet
-          end,
-        },
-        sources = {
-          { name = "luasnip" }, -- Thêm nguồn LuaSnip vào nvim-cmp
-        },
-        mapping = cmp.mapping.preset.insert({
-          ["<Tab>"] = cmp.mapping.select_next_item(),
-          ["<S-Tab>"] = cmp.mapping.select_prev_item(),
-          ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Xác nhận lựa chọn
-        }),
-
-        -- completion = {
-        --   autocomplete = { cmp.config.context.menu_completion }, -- Mở hoàn thành tự động
-        -- },
-      })
     end,
   },
   {
