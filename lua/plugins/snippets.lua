@@ -1,4 +1,4 @@
-return {
+local snippets = {
   {
     "L3MON4D3/LuaSnip",
     dependencies = {
@@ -104,3 +104,4 @@ return {
     },
   },
 }
+return snippets
