@@ -4,4 +4,4 @@ local ccc = {
     require("ccc").setup()
   end,
 }
-return {}
+return { ccc }

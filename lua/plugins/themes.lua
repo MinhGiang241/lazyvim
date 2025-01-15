@@ -1,5 +1,5 @@
 themes = {
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  { "catppuccin/nvim", name = "catppuccin" },
   { "EdenEast/nightfox.nvim" },
   { "https://gitlab.com/bartekjaszczak/luma-nvim" },
   { "diegoulloao/neofusion.nvim" },

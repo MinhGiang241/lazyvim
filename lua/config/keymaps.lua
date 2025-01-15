@@ -65,3 +65,5 @@ wk.add({ "<leader>sh", "<cmd>FzfLua oldfiles<cr>", desc = "Help Doc", mode = "n"
 wk.add({ "<leader>cp", "<cmd>CccPick<cr>", desc = "Pick color", mode = "n" })
 
 wk.add({ "<leader>cv", "<cmd>CccConvert<cr>", desc = "Convert color", mode = "v" })
+
+wk.add({ "<leader>i", "<cmd>:lua require('nvim-window').pick()<CR>", desc = "Pick window", mode = "n" })
