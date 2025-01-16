@@ -1,4 +1,4 @@
-local nuget = {
+return {
   "d7omdev/nuget.nvim",
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -8,5 +8,3 @@ local nuget = {
     require("nuget").setup()
   end,
 }
-
-return {}
