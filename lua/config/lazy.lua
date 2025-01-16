@@ -9,7 +9,7 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
-    { "LazyVim/LazyVim", import = "lazyvim.plugins", opts = { colorscheme = "base16-tokyo-city-terminal-dark" } },
+    { "LazyVim/LazyVim", import = "lazyvim.plugins", opts = { colorscheme = "base16-outrun-dark" } },
     -- import any extras modules here
     -- { import = "lazyvim.plugins.extras.ui.edgy" },
     -- { import = "lazyvim.plugins.extras.editor.symbols-outline" },
@@ -27,7 +27,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.tailwind" },
     { import = "lazyvim.plugins.extras.lang.omnisharp" },
     { import = "lazyvim.plugins.extras.lang.json" },
-    { import = "lazyvim.plugins.extras.coding.copilot" },
+    -- { import = "lazyvim.plugins.extras.coding.copilot" },
     { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
     { import = "lazyvim.plugins.extras.editor.fzf" },
