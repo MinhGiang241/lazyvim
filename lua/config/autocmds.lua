@@ -34,8 +34,8 @@ local handlers = {
 
 -- Set commentstring for Kotlin files
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "kotlin",
-    command = "setlocal commentstring=//\\ %s"
+  pattern = "kotlin",
+  command = "setlocal commentstring=//\\ %s",
 })
 
 cmp.setup({
@@ -64,6 +64,20 @@ vim.api.nvim_create_autocmd("FileType", {
 
 local current_window = vim.api.nvim_get_current_win()
 vim.wo[current_window].wrap = true
+vim.api.nvim_create_user_command("Bgon", function()
+  vim.cmd([[colorscheme base16-outrun-dark]])
+end, {})
+vim.api.nvim_create_user_command("Bgoff", function()
+  vim.cmd([[
+    highlight Normal guibg=NONE ctermbg=NONE
+    highlight NonText guibg=NONE ctermbg=NONE
+    highlight NormalNC guibg=NONE ctermbg=NONE
+    highlight LineNr guibg=NONE ctermbg=NONE
+    highlight NvimTreeNormal guibg=NONE ctermbg=NONE
+    highlight NvimTreeNormalNC guibg=NONE ctermbg=NONE
+    highlight NeoTreeGitModified guibg=NONE ctermbg=NONE
+  ]])
+end, {})
 
 -- local nvim_lsp = require("lspconfig")
 

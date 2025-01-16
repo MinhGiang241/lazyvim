@@ -37,6 +37,10 @@ keymap.set("n", "sk", "<C-w>k")
 keymap.set("n", "sj", "<C-w>j")
 keymap.set("n", "sl", "<C-w>l")
 
+-- Open definaiition new vertival split pane
+keymap.set("n", "gsv", "<cmd>vsp<Cr><cmd>lua vim.lsp.buf.definition()<cr>", opts)
+keymap.set("n", "gsh", "<cmd>sp<Cr><cmd>lua vim.lsp.buf.definition()<cr>", opts)
+
 -- Toggleterm
 keymap.set("n", "tt", "<cmd>ToggleTerm<cr>", opts)
 keymap.set("t", "<Esc>", [[<C-\><C-n>]], opts)
