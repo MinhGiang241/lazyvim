@@ -51,7 +51,7 @@ end)
 
 -- projects
 wk.add(
-  { "<leader>p", "<cmd>Telescope projects<cr>", desc = "Find Projects", mode = "n" }
+  { "<leader>p", "<cmd>Telescope projects<cr>", desc = "Find Project", mode = "n" }
 
   --   {
   --   p = { "<cmd>Telescope projects<cr>", "projects", noremap = false },
@@ -65,3 +65,5 @@ wk.add({ "<leader>sh", "<cmd>FzfLua oldfiles<cr>", desc = "Help Doc", mode = "n"
 wk.add({ "<leader>cp", "<cmd>CccPick<cr>", desc = "Pick color", mode = "n" })
 
 wk.add({ "<leader>cv", "<cmd>CccConvert<cr>", desc = "Convert color", mode = "v" })
+
+wk.add({ "<leader>i", "<cmd>:lua require('nvim-window').pick()<CR>", desc = "Pick window", mode = "n" })

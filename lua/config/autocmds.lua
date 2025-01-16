@@ -1,12 +1,10 @@
 -- Autocmds are automatically loaded on the VeryLazy event
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
---
 -- Add any additional autocmds here
--- with `vim.api.nvim_create_autocmd`
---
--- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
--- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
+--border
+
+-- Turn off paste mode when leaving insert
 vim.api.nvim_create_autocmd("InsertLeave", {
   pattern = "*",
   command = "set nopaste",
@@ -36,8 +34,8 @@ local handlers = {
 
 -- Set commentstring for Kotlin files
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "kotlin",
-  command = "setlocal commentstring=//\\ %s",
+    pattern = "kotlin",
+    command = "setlocal commentstring=//\\ %s"
 })
 
 cmp.setup({
@@ -66,3 +64,15 @@ vim.api.nvim_create_autocmd("FileType", {
 
 local current_window = vim.api.nvim_get_current_win()
 vim.wo[current_window].wrap = true
+
+-- local nvim_lsp = require("lspconfig")
+
+-- local on_attach = function(client, bufnr)
+--   -- other stuff --
+--   require("tailwindcss-colors").buf_attach(bufnr)
+-- end
+--
+-- nvim_lsp["tailwindcss"].setup({
+--   -- other settings --
+--   on_attach = on_attach,
+-- })
