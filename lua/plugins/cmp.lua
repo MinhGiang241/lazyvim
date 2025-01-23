@@ -1,4 +1,4 @@
-return {
+local cmp = {
   "hrsh7th/nvim-cmp",
   enabled = true,
   dependencies = {
@@ -17,7 +17,10 @@ return {
       end,
     }
     if LazyVim.has("nvim-snippets") then
+      opts.sources = opts.sources or {}
       table.insert(opts.sources, { name = "snippets" })
     end
   end,
 }
+
+return { cmp }
