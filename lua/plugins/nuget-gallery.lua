@@ -5,6 +5,11 @@ return {
     "nvim-telescope/telescope.nvim",
   },
   config = function()
-    require("nuget").setup()
+    require("nuget").setup({
+      keys = {
+        install = { "n", "<leader>ri" },
+        remove = { "n", "<leader>rr" },
+      },
+    })
   end,
 }

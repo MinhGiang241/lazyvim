@@ -16,14 +16,15 @@ local snippets = {
       local ls = require("luasnip")
       local s = ls.snippet
       local t = ls.text_node
-      local i = ls.insert_node
-      local cmp = require("cmp")
+      -- local i = ls.insert_node
+      -- local cmp = require("cmp")
 
       ls.add_snippets("all", {
         s("hi", {
           t("hello, world"),
         }),
       })
+
       -- Thêm snippet cho C#
       -- ls.add_snippets("cs", {
       --   s("summary", {
@@ -85,4 +86,4 @@ local snippets = {
     },
   },
 }
-return snippets
+return { snippets }

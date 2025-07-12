@@ -18,7 +18,20 @@ local setup = {
     "akinsho/toggleterm.nvim",
     version = "*",
     config = function()
-      require("toggleterm").setup({ shell = "pwsh.exe" }) --C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe
+      require("toggleterm").setup({
+        shell = "pwsh.exe",
+        shade_terminals = false,
+        hightlights = {
+          Normal = {
+            guibg = "NONE",
+            ctermbg = "NONE",
+          },
+          NormalFloat = {
+            guibg = "NONE",
+            ctermbg = "NONE",
+          },
+        },
+      }) --C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe
     end,
   },
 }
