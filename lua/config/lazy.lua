@@ -31,10 +31,12 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.tailwind" },
     { import = "lazyvim.plugins.extras.lang.omnisharp" },
     { import = "lazyvim.plugins.extras.lang.json" },
-    { import = "lazyvim.plugins.extras.ai.copilot" },
+    -- { import = "lazyvim.plugins.extras.ai.copilot" },
     { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
     { import = "lazyvim.plugins.extras.editor.fzf" },
+    { import = "lazyvim.plugins.extras.coding.mini-comment" },
+    { import = "lazyvim.plugins.extras.coding.mini-snippets" },
     -- { import = "lazyvim.plugins.extras.lang.kotlin" },
     { import = "lazyvim.plugins.extras.lang.java" },
     -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
@@ -66,13 +68,4 @@ require("lazy").setup({
       },
     },
   },
-})
-
-local ls = require("luasnip")
-local s = ls.snippet
-local t = ls.text_node
-ls.add_snippets("all", {
-  s("haa", {
-    t("hello, world"),
-  }),
 })

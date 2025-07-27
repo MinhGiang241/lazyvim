@@ -31,6 +31,10 @@ keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
 keymap.set("n", "ss", ":split<Return>", opts)
 keymap.set("n", "sv", ":vsplit<Return>", opts)
 
+-- Copy Paste
+keymap.set("i", "<C-v>", "<ESC>pi", opts)
+keymap.set("v", "<C-c>", "y", opts)
+
 -- Toggleterm
 keymap.set("n", "tt", "<cmd>ToggleTerm<cr>", opts)
 keymap.set("t", "<Esc>", [[<C-\><C-n>]], opts)
