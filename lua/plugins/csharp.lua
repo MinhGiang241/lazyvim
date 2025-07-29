@@ -1,5 +1,5 @@
-local cs=  
- {
+local cs = {
+  { "Hoffs/omnisharp-extended-lsp.nvim", lazy = true },
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
@@ -53,4 +53,4 @@ local cs=
   },
 }
 
-return cs 
+return cs
