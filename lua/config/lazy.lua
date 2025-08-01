@@ -42,6 +42,7 @@ require("lazy").setup({
     -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
     -- import/override with your plugins
+    { import = "lazyvim.plugins.extras.editor.neo-tree" },
     { import = "plugins" },
   },
   defaults = {

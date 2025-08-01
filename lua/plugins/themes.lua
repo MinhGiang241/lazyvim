@@ -134,4 +134,4 @@ themes = {
   { "sontungexpt/witch" },
 }
 
-return { { "RRethy/base16-nvim" }, { "miikanissi/modus-themes.nvim" } }
+return { { "catppuccin/nvim", name = "catppuccin" }, { "EdenEast/nightfox.nvim" } }
