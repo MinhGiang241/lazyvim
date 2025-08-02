@@ -70,3 +70,29 @@ require("lazy").setup({
     },
   },
 })
+
+local commands = require("neo-tree.sources.filesystem.commands")
+local window_picker = require("nvim-window")
+
+-- Lưu lại hàm gốc
+local old_open = commands.open
+
+-- Ghi đè
+commands.open = function(state)
+  local node = state.tree:get_node()
+  local path = node:get_id()
+  local current_tabpage = vim.api.nvim_get_current_tabpage()
+  local wins = vim.api.nvim_tabpage_list_wins(current_tabpage)
+  local count = #wins
+   -- Bạn làm gì đó trước khi mở file ở đây
+  if  count > 2 then
+    local picked_window_id = window_picker.pick()
+    if picked_window_id  then
+          vim.api.nvim_set_current_win(picked_window_id)
+    end
+  end
+
+
+  -- Gọi lại hành vi gốc để thực sự mở file
+  old_open(state)
+end
