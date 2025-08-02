@@ -85,7 +85,7 @@ commands.open = function(state)
   local wins = vim.api.nvim_tabpage_list_wins(current_tabpage)
   local count = #wins
    -- Bạn làm gì đó trước khi mở file ở đây
-  if  count > 2 then
+  if node.type == "file" and count > 2 then
     local picked_window_id = window_picker.pick()
     if picked_window_id  then
           vim.api.nvim_set_current_win(picked_window_id)
