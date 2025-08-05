@@ -31,6 +31,10 @@ keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
 keymap.set("n", "ss", ":split<Return>", opts)
 keymap.set("n", "sv", ":vsplit<Return>", opts)
 
+-- Open definition new vertival split pane
+keymap.set("n", "gsv", "<cmd>vsp<Cr><cmd>lua vim.lsp.buf.definition()<cr>", opts)
+keymap.set("n", "gss", "<cmd>sp<Cr><cmd>lua vim.lsp.buf.definition()<cr>", opts)
+
 -- Copy Paste
 keymap.set("i", "<C-v>", "<ESC>pi", opts)
 keymap.set("v", "<C-c>", "y", opts)
@@ -53,7 +57,3 @@ wk.add({ "<leader>cp", "<cmd>CccPick<cr>", desc = "Pick color", mode = "n" })
 wk.add({ "<leader>cv", "<cmd>CccConvert<cr>", desc = "Convert color", mode = "v" })
 
 wk.add({ "<leader>i", "<cmd>:lua require('nvim-window').pick()<CR>", desc = "Pick window", mode = "n" })
-
-wk.add({ "gsv", "<leader>|gd", desc = "go to definition and split vertical", mode = "n" })
-
-wk.add({ "gss", "<leader>-gd", desc = "go to definition and split horizoltal", mode = "n" })
