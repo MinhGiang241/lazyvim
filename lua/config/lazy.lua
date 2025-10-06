@@ -84,14 +84,18 @@ commands.open = function(state)
   local current_tabpage = vim.api.nvim_get_current_tabpage()
   local wins = vim.api.nvim_tabpage_list_wins(current_tabpage)
   local count = #wins
-   -- Bạn làm gì đó trước khi mở file ở đây
+  -- Bạn làm gì đó trước khi mở file ở đây
   if node.type == "file" and count > 2 then
-    local picked_window_id = window_picker.pick()
-    if picked_window_id  then
-          vim.api.nvim_set_current_win(picked_window_id)
+    local bufnr = vim.fn.bufnr(path)
+    local file_is_open = bufnr ~= -1 and #vim.fn.win_findbuf(bufnr) > 0
+
+    if not file_is_open then
+      local picked_window_id = window_picker.pick()
+      if picked_window_id then
+        vim.api.nvim_set_current_win(picked_window_id)
+      end
     end
   end
-
 
   -- Gọi lại hành vi gốc để thực sự mở file
   old_open(state)

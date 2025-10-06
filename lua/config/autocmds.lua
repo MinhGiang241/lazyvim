@@ -52,3 +52,13 @@ vim.api.nvim_create_user_command("Sms", function()
     end,
   })
 end, {})
+
+local function generate_uuid()
+  local uuid = vim.fn.system('powershell.exe -command "[guid]::NewGuid().ToString()"'):gsub("\r?\n", "")
+  return uuid
+end
+
+vim.api.nvim_create_user_command("Uuid", function()
+  local uuid = generate_uuid()
+  vim.api.nvim_put({ uuid }, "c", true, true)
+end, {})

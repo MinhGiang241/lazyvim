@@ -46,6 +46,9 @@ for i = 1, 10 do
   keymap.set("n", "tt" .. i, "<cmd>ToggleTerm " .. i .. "<cr>", opts)
 end
 
+-- backwards
+keymap.set("n", "<C-p>", "<C-i>", opts)
+
 wk.add({ "<leader>p", "<cmd>Telescope projects<cr>", desc = "Find Project", mode = "n" })
 
 wk.add({ "<leader>so", "<cmd>Telescope oldfiles<cr>", desc = "Recent Files", mode = "n" })
@@ -57,3 +60,5 @@ wk.add({ "<leader>cp", "<cmd>CccPick<cr>", desc = "Pick color", mode = "n" })
 wk.add({ "<leader>cv", "<cmd>CccConvert<cr>", desc = "Convert color", mode = "v" })
 
 wk.add({ "<leader>i", "<cmd>:lua require('nvim-window').pick()<CR>", desc = "Pick window", mode = "n" })
+
+wk.add({ "<leader>se", "<cmd>:Telescope aerial<CR>", desc = "Telescope symbol", mode = "n" })
