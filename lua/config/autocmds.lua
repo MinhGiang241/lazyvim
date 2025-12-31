@@ -62,3 +62,35 @@ vim.api.nvim_create_user_command("Uuid", function()
   local uuid = generate_uuid()
   vim.api.nvim_put({ uuid }, "c", true, true)
 end, {})
+
+-- Lưu handler gốc
+local orig_handler = vim.lsp.handlers["workspace/didChangeWatchedFiles"]
+
+-- Trạng thái
+vim.g.lsp_filewatcher_enabled = false
+
+-- Hàm tắt
+local function disable_filewatcher()
+  vim.lsp.handlers["workspace/didChangeWatchedFiles"] = function() end
+  vim.g.lsp_filewatcher_enabled = false
+  print("LSP file watcher: OFF")
+end
+
+-- Hàm bật
+local function enable_filewatcher()
+  vim.lsp.handlers["workspace/didChangeWatchedFiles"] = orig_handler
+  vim.g.lsp_filewatcher_enabled = true
+  print("LSP file watcher: ON")
+end
+
+-- Hàm toggle
+function ToggleLspFileWatcher()
+  if vim.g.lsp_filewatcher_enabled then
+    disable_filewatcher()
+  else
+    enable_filewatcher()
+  end
+end
+
+-- Mặc định: tắt
+disable_filewatcher()
