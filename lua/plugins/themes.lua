@@ -132,6 +132,12 @@ themes = {
   { "rafamadriz/neon" },
   { "Abstract-IDE/Abstract-cs" },
   { "sontungexpt/witch" },
+  { "rebelot/kanagawa.nvim" },
+  { "rktjmp/lush.nvim" },
 }
 
-return { { "catppuccin/nvim", name = "catppuccin" }, { "EdenEast/nightfox.nvim" } }
+return {
+  { "catppuccin/nvim", name = "catppuccin" },
+  { "EdenEast/nightfox.nvim" },
+  { "rktjmp/lush.nvim" },
+}

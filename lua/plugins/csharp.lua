@@ -53,4 +53,34 @@ local cs = {
   },
 }
 
-return cs
+return {
+  {
+    "stevearc/conform.nvim",
+    optional = true,
+    opts = {
+      formatters_by_ft = {
+        cs = { "lsp" },
+      },
+    },
+  },
+  {
+    "seblyng/roslyn.nvim",
+    ft = "cs",
+    opts = {
+      -- config nếu cần (để trống dùng mặc định)
+      filewatching = "off", -- tuỳ chọn để giảm lag nếu project lớn
+    },
+  },
+
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        roslyn = {
+          -- không cần cmd nếu Mason đã cài và PATH đúng
+        },
+        omnisharp = false, -- disable nó đi
+      },
+    },
+  },
+}
