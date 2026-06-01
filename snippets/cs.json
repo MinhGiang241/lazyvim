@@ -1,0 +1,11 @@
+{
+  "AsyncMethod": {
+    "prefix": "asyncm",
+    "body": [
+      "public async Task<${1:Result}> ${2:MethodName}Async(${3})",
+      "{",
+      "    ${4}",
+      "}"
+    ]
+  }
+}

@@ -134,10 +134,25 @@ themes = {
   { "sontungexpt/witch" },
   { "rebelot/kanagawa.nvim" },
   { "rktjmp/lush.nvim" },
+  { "Shatur/neovim-ayu" },
+  { "embark-theme/vim" },
+  { "rose-pine/neovim" },
+  { "vague-theme/vague.nvim" },
+  { "Domeee/mosel.nvim" },
+  { "cpwrs/americano.nvim" },
+  { "uloco/bluloco.nvim" },
+  { "scottmckendry/cyberdream.nvim" },
+  { "shakesbeare/cavernous.nvim" },
+  { "nyoom-engineering/oxocarbon.nvim" },
+  { "rockyzhang24/arctic.nvim" },
+  { "drcmda/poimandres-theme" },
+  { "bluz71/vim-moonfly-colors" },
 }
 
 return {
   { "catppuccin/nvim", name = "catppuccin" },
   { "EdenEast/nightfox.nvim" },
-  { "rktjmp/lush.nvim" },
+  { "uloco/bluloco.nvim", dependencies = { "rktjmp/lush.nvim" } },
+  { "nyoom-engineering/oxocarbon.nvim" },
+  { "bluz71/vim-moonfly-colors" },
 }
