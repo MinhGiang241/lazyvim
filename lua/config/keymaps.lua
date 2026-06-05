@@ -34,6 +34,7 @@ keymap.set("n", "sv", ":vsplit<Return>", opts)
 -- Open definition new vertival split pane
 keymap.set("n", "gsv", "<cmd>vsp<Cr><cmd>lua vim.lsp.buf.definition()<cr>", opts)
 keymap.set("n", "gss", "<cmd>sp<Cr><cmd>lua vim.lsp.buf.definition()<cr>", opts)
+keymap.set("n", "gsi", "<cmd>vsp<Cr><cmd>lua vim.lsp.buf.implementation()<cr>", opts)
 
 -- Copy Paste
 keymap.set("i", "<C-v>", "<ESC>pi", opts)
