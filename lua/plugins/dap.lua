@@ -21,6 +21,42 @@ return {
       )
     end
 
+    dap.configurations.java = {
+      {
+        type = "java",
+        request = "attach",
+        name = "Attach - Java Process (Pick JDWP Process)",
+        hostName = "127.0.0.1",
+        port = function()
+          -- 1. Tìm các process Java đang chạy có cờ debug jdwp (lấy ra Port)
+          local handle = io.popen("pgrep -a java 2>/dev/null | grep jdwp")
+          local result = handle:read("*a")
+          handle:close()
+
+          local options = {}
+          for line in result:gmatch("[^\r\n]+") do
+            -- Trích xuất cổng address=... (ví dụ address=5005 hoặc address=*:5005)
+            local port = line:match("address=[%*:%d]*:(%d+)") or line:match("address=(%d+)")
+            if port then
+              table.insert(options, string.format("Port %s | %s", port, line:sub(1, 80)))
+            end
+          end
+
+          -- Nếu không tìm thấy process Java nào đang bật JDWP, cho nhập thủ công
+          if #options == 0 then
+            return tonumber(vim.fn.input("Không thấy JDWP process. Nhập Port thủ công: ", "5005"))
+          end
+
+          -- 2. Hiện menu UI cho bạn chọn process giống như C# pick_process
+          local choice = vim.fn.confirm("Chọn Java process để attach:", table.concat(options, "\n"), 1)
+          if choice > 0 then
+            local selected_port = options[choice]:match("Port (%d+)")
+            return tonumber(selected_port)
+          end
+        end,
+      },
+    }
+
     dap.adapters.coreclr = {
       type = "executable",
       command = "netcoredbg",
