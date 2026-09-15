@@ -92,5 +92,30 @@ function ToggleLspFileWatcher()
   end
 end
 
+-- Tạo Hàm TS Check (Native Neovim API)
+vim.api.nvim_create_user_command("TSCheck", function()
+  -- Quét các file parser binaries (.dll trên Windows, .so trên Linux/macOS)
+  local files = vim.api.nvim_get_runtime_file("parser/*.dll", true)
+  if #files == 0 then
+    files = vim.api.nvim_get_runtime_file("parser/*.so", true)
+  end
+
+  print("=== Installed Treesitter Parsers ===")
+  if #files == 0 then
+    print("  Chưa tìm thấy parser nào được cài đặt.")
+    return
+  end
+
+  local installed = {}
+  for _, filepath in ipairs(files) do
+    -- Trích xuất tên ngôn ngữ từ đường dẫn file (VD: c_sharp.dll -> c_sharp)
+    local filename = filepath:match("[^\\/]+$")
+    local lang = filename:gsub("%.dll$", ""):gsub("%.so$", "")
+    if not installed[lang] then
+      installed[lang] = true
+      print("  [✓] " .. lang)
+    end
+  end
+end, {})
 -- Mặc định: tắt
 disable_filewatcher()

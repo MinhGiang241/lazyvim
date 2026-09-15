@@ -47,6 +47,10 @@ for i = 1, 10 do
   keymap.set("n", "tt" .. i, "<cmd>ToggleTerm " .. i .. "<cr>", opts)
 end
 
+-- Save without format
+keymap.set("n", "<C-x>", "<cmd>noa w<cr>", opts)
+keymap.set("i", "<C-x>", "<cmd>noa w<cr>", opts)
+
 -- backwards
 keymap.set("n", "<C-p>", "<C-i>", opts)
 

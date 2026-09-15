@@ -1,0 +1,208 @@
+" ============================================================================
+" .ideavimrc — chuyển đổi từ cấu hình LazyVim (keymaps.txt) sang IdeaVim
+" cho IntelliJ IDEA / các IDE JetBrains.
+" Vì IntelliJ không có Telescope, Treesitter textobjects, DAP, gitsigns...
+" nên các phím tương ứng được ánh xạ sang action gần nhất có sẵn của IDE.
+" ============================================================================
+
+"" ---------------------------------------------------------------------------
+"" 1. Cấu hình chung
+"" ---------------------------------------------------------------------------
+let mapleader = " "
+let maplocalleader = " "
+
+set number
+set relativenumber
+set scrolloff=8
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+set nowrapscan
+set showmode
+
+" Dùng clipboard hệ thống, giữ hành vi native của IDE khi có thể
+set clipboard+=unnamedplus
+set ideajoin              " gq/J dùng logic join của IDE (thông minh hơn)
+set ideastatusicon=gray
+set ideamarks             " đồng bộ Vim marks với IDE bookmarks (nếu hỗ trợ)
+set idearefactormode=keep " giữ nguyên mode khi refactor (rename inline...)
+
+"" ---------------------------------------------------------------------------
+"" 2. Plugin giả lập (IdeaVim built-in emulation)
+"" ---------------------------------------------------------------------------
+set surround              " gsa/gsd/gsr ~ nvim-surround / mini.surround
+set commentary            " gcc/gc ~ Comment.nvim
+set argtextobj            " cia/daa ~ textobject tham số (giống [a ]a)
+set textobj-entire        " vae/vie ~ toàn bộ buffer
+set ReplaceWithRegister   " gr ~ replace bằng register
+set exchange              " cx/cxx ~ hoán đổi text
+set highlightedyank       " highlight khi yank, giống yanky/nvim
+set matchit               " %, ]%, [% điều hướng cặp ngoặc/tag nâng cao
+set multiple-cursors       " <C-n> tạo nhiều con trỏ, gần giống vim-visual-multi
+set NERDTree               " lệnh :NERDTree (dự phòng, IntelliJ đã có Project view)
+" set easymotion           " bật nếu cài plugin IdeaVim-EasyMotion (thay cho Flash s/S)
+
+"" ---------------------------------------------------------------------------
+"" 3. Chung: Esc, lưu file, di chuyển dòng (giống init.lua)
+"" ---------------------------------------------------------------------------
+nnoremap <Esc> :nohlsearch<CR>
+inoremap <Esc> <Esc>:nohlsearch<CR>
+
+nnoremap <C-S> :w<CR>
+inoremap <C-S> <Esc>:w<CR>
+vnoremap <C-S> <Esc>:w<CR>
+
+" <M-j>/<M-k> Move Down/Up
+nnoremap <M-j> :m .+1<CR>==
+nnoremap <M-k> :m .-2<CR>==
+vnoremap <M-j> :m '>+1<CR>gv=gv
+vnoremap <M-k> :m '<-2<CR>gv=gv
+
+"" ---------------------------------------------------------------------------
+"" 4. Điều hướng Window (Ctrl-h/j/k/l, Ctrl-Arrow resize)
+"" ---------------------------------------------------------------------------
+nnoremap <C-H> <C-w>h
+nnoremap <C-J> <C-w>j
+nnoremap <C-K> <C-w>k
+nnoremap <C-L> <C-w>l
+
+nnoremap <C-Left>  <C-w><
+nnoremap <C-Right> <C-w>>
+nnoremap <C-Up>    <C-w>+
+nnoremap <C-Down>  <C-w>-
+
+" <leader>| / <leader>- : chia cửa sổ dọc/ngang
+nnoremap <leader>\| :action SplitVertically<CR>
+nnoremap <leader>-  :action SplitHorizontally<CR>
+" <leader>wd : đóng split hiện tại
+nnoremap <leader>wd :action Unsplit<CR>
+nnoremap <leader>wm :action ToggleDistractionFreeMode<CR>
+
+"" ---------------------------------------------------------------------------
+"" 5. Buffer / Tab (H, L, [b, ]b, <leader>b*)
+"" ---------------------------------------------------------------------------
+nnoremap H :action PreviousTab<CR>
+nnoremap L :action NextTab<CR>
+nnoremap [b :action PreviousTab<CR>
+nnoremap ]b :action NextTab<CR>
+
+nnoremap <leader>bb :action Switcher<CR>
+nnoremap <leader>`   :action Switcher<CR>
+nnoremap <leader>bd :action CloseContent<CR>
+nnoremap <leader>bD :action CloseContent<CR>
+nnoremap <leader>bo :action CloseAllEditorsButActive<CR>
+nnoremap <leader>bl :action CloseAllToTheLeft<CR>
+nnoremap <leader>br :action CloseAllToTheRight<CR>
+
+"" ---------------------------------------------------------------------------
+"" 6. Tìm kiếm & điều hướng file (thay cho Telescope)
+"" ---------------------------------------------------------------------------
+nnoremap <leader><leader> :action GotoFile<CR>
+nnoremap <leader>ff       :action GotoFile<CR>
+nnoremap <leader>fg       :action GotoFile<CR>
+nnoremap <leader>fr       :action RecentFiles<CR>
+nnoremap <leader>fR       :action RecentFiles<CR>
+nnoremap <leader>fb       :action Switcher<CR>
+nnoremap <leader>fn       :action NewElement<CR>
+
+nnoremap <leader>/  :action FindInPath<CR>
+nnoremap <leader>sg :action FindInPath<CR>
+nnoremap <leader>sG :action FindInPath<CR>
+nnoremap <leader>sw :action FindInPath<CR>
+nnoremap <leader>ss :action FileStructurePopup<CR>
+nnoremap <leader>sS :action GotoSymbol<CR>
+nnoremap <leader>sc :action GotoClass<CR>
+nnoremap <leader>sa :action GotoAction<CR>
+nnoremap <leader>sh :action HelpTopics<CR>
+nnoremap <leader>sq :action ActivateProblemsViewToolWindow<CR>
+nnoremap <leader>sd :action ActivateProblemsViewToolWindow<CR>
+nnoremap <leader>,  :action Switcher<CR>
+nnoremap <leader>p  :action GotoFile<CR>
+
+"" ---------------------------------------------------------------------------
+"" 7. LSP: go-to, hover, code action, rename, format (gd/gr/K/<leader>c*)
+"" ---------------------------------------------------------------------------
+nnoremap gd  :action GotoDeclaration<CR>
+nnoremap gD  :action GotoTypeDeclaration<CR>
+nnoremap gy  :action GotoTypeDeclaration<CR>
+nnoremap gI  :action GotoImplementation<CR>
+nnoremap gr  :action FindUsages<CR>
+nnoremap grr :action FindUsages<CR>
+nnoremap gri :action GotoImplementation<CR>
+nnoremap grt :action GotoTypeDeclaration<CR>
+nnoremap grn :action RenameElement<CR>
+nnoremap gra :action ShowIntentionActions<CR>
+nnoremap gO  :action FileStructurePopup<CR>
+nnoremap K   :action QuickJavaDoc<CR>
+nnoremap gK  :action ParameterInfo<CR>
+
+nnoremap <leader>ca :action ShowIntentionActions<CR>
+nnoremap <leader>cA :action ShowIntentionActions<CR>
+nnoremap <leader>cr :action RenameElement<CR>
+nnoremap <leader>cR :action RenameFile<CR>
+nnoremap <leader>cf :action ReformatCode<CR>
+vnoremap <leader>cf :action ReformatCode<CR>
+nnoremap <leader>cd :action ShowErrorDescription<CR>
+nnoremap <leader>cm :action ShowIntentionActions<CR>
+
+" Diagnostics: ] d / [ d, next/prev error
+nnoremap [d :action GotoPreviousError<CR>
+nnoremap ]d :action GotoNextError<CR>
+nnoremap [e :action GotoPreviousError<CR>
+nnoremap ]e :action GotoNextError<CR>
+nnoremap <leader>xx :action ActivateProblemsViewToolWindow<CR>
+nnoremap <leader>xX :action ActivateProblemsViewToolWindow<CR>
+
+"" ---------------------------------------------------------------------------
+"" 8. Comment (gcc / gc)
+"" ---------------------------------------------------------------------------
+nnoremap gcc :action CommentByLineComment<CR>
+vnoremap gc  :action CommentByLineComment<CR>
+
+"" ---------------------------------------------------------------------------
+"" 9. Git (gitsigns -> VCS action của IntelliJ)
+"" ---------------------------------------------------------------------------
+nnoremap <leader>gs :action ActivateVersionControlToolWindow<CR>
+nnoremap <leader>gc :action Vcs.Show.Log<CR>
+nnoremap <leader>gl :action Vcs.Show.Log<CR>
+nnoremap <leader>gb :action Annotate<CR>
+nnoremap <leader>ghb :action Annotate<CR>
+nnoremap <leader>ghp :action VcsShowCurrentChangeMarker<CR>
+nnoremap <leader>ghr :action Vcs.RollbackChangedLines<CR>
+nnoremap <leader>ghR :action Vcs.RollbackChangedLines<CR>
+nnoremap ]h :action VcsShowNextChangeMarker<CR>
+nnoremap [h :action VcsShowPrevChangeMarker<CR>
+nnoremap ]H :action VcsShowNextChangeMarker<CR>
+nnoremap [H :action VcsShowPrevChangeMarker<CR>
+
+"" ---------------------------------------------------------------------------
+"" 10. Explorer / Terminal
+"" ---------------------------------------------------------------------------
+nnoremap <leader>fe :action ActivateProjectToolWindow<CR>
+nnoremap <leader>fE :action ActivateProjectToolWindow<CR>
+nnoremap <leader>e  :action ActivateProjectToolWindow<CR>
+nnoremap <leader>ft :action ActivateTerminalToolWindow<CR>
+nnoremap <leader>fT :action ActivateTerminalToolWindow<CR>
+nnoremap <C-_>      :action ActivateTerminalToolWindow<CR>
+
+"" ---------------------------------------------------------------------------
+"" 11. Khác
+"" ---------------------------------------------------------------------------
+nnoremap <leader>qq :action Exit<CR>
+nnoremap <leader>uf :action ReformatCode<CR>
+nnoremap <leader>ul :action ToggleLineNumbers<CR>
+
+" Flash-like jump (cần cài plugin IdeaVim-EasyMotion & bỏ comment 2 dòng dưới)
+" map s <Plug>(easymotion-s)
+" map S <Plug>(easymotion-s2)
+
+"" ---------------------------------------------------------------------------
+" Ghi chú:
+" - Các tính năng không có tương đương trực tiếp trong IntelliJ (DAP debug UI,
+"   Treesitter textobjects [a ]a [f ]f, Trouble list, Noice, mini.files, Gemini
+"   CLI...) không được ánh xạ vì IDE đã có công cụ debug/UI riêng (dùng phím
+"   tắt gốc của IntelliJ: F8/F9 step, Alt+F9 run to cursor...).
+" - Sau khi sửa file này, vào IntelliJ: Tools > IdeaVim > Reload Vimrc,
+"   hoặc chạy lệnh :source ~/.ideavimrc trong chế độ Vim.
+"" ---------------------------------------------------------------------------
