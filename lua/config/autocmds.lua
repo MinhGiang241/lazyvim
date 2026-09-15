@@ -92,29 +92,38 @@ function ToggleLspFileWatcher()
   end
 end
 
--- Tạo Hàm TS Check (Native Neovim API)
 vim.api.nvim_create_user_command("TSCheck", function()
-  -- Quét các file parser binaries (.dll trên Windows, .so trên Linux/macOS)
-  local files = vim.api.nvim_get_runtime_file("parser/*.dll", true)
-  if #files == 0 then
-    files = vim.api.nvim_get_runtime_file("parser/*.so", true)
-  end
-
-  print("=== Installed Treesitter Parsers ===")
-  if #files == 0 then
-    print("  Chưa tìm thấy parser nào được cài đặt.")
-    return
-  end
+  -- Quét tất cả file parser (.dll trên Windows, .so trên Linux/macOS)
+  local files = vim.api.nvim_get_runtime_file("parser/*.*", true)
 
   local installed = {}
   for _, filepath in ipairs(files) do
-    -- Trích xuất tên ngôn ngữ từ đường dẫn file (VD: c_sharp.dll -> c_sharp)
-    local filename = filepath:match("[^\\/]+$")
-    local lang = filename:gsub("%.dll$", ""):gsub("%.so$", "")
-    if not installed[lang] then
+    if filepath:match("%.dll$") or filepath:match("%.so$") then
+      local filename = filepath:match("[^\\/]+$")
+      local lang = filename:gsub("%.dll$", ""):gsub("%.so$", "")
       installed[lang] = true
-      print("  [✓] " .. lang)
     end
+  end
+
+  print("=== Installed Treesitter Parsers ===")
+  local count = 0
+
+  -- Sắp xếp tên ngôn ngữ theo thứ tự ABC
+  local sorted_langs = {}
+  for lang in pairs(installed) do
+    table.insert(sorted_langs, lang)
+  end
+  table.sort(sorted_langs)
+
+  for _, lang in ipairs(sorted_langs) do
+    print("  [✓] " .. lang)
+    count = count + 1
+  end
+
+  if count == 0 then
+    print("  Chưa tìm thấy parser nào được cài đặt.")
+  else
+    print("\nTổng cộng: " .. count .. " parsers.")
   end
 end, {})
 -- Mặc định: tắt

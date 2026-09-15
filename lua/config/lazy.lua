@@ -108,3 +108,5 @@ require("mason").setup({
     "github:Crashdummyy/mason-registry",
   },
 })
+vim.env.CC = "gcc"
+require("nvim-treesitter.install").compilers = { "gcc", "clang" }
