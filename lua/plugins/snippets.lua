@@ -1,50 +1,26 @@
-local snippets = {
+return {
   {
     "L3MON4D3/LuaSnip",
     dependencies = {
       "rafamadriz/friendly-snippets",
-      config = function()
-        -- for friendly snippets
-        require("luasnip.loaders.from_vscode").lazy_load()
-        -- for custom snippets
-        require("luasnip.loaders.from_vscode").lazy_load({
-          paths = vim.fn.stdpath("config") .. "/snippets/",
-        })
-      end,
     },
-    config = function()
-      local ls = require("luasnip")
-      local s = ls.snippet
-      local t = ls.text_node
-      -- local i = ls.insert_node
-      -- local cmp = require("cmp")
-
-      ls.add_snippets("all", {
-        s("hi", {
-          t("hello, world"),
-        }),
+    config = function(_, opts)
+      require("luasnip").setup(opts)
+      require("luasnip.loaders.from_vscode").lazy_load()
+      require("luasnip.loaders.from_vscode").lazy_load({
+        paths = { vim.fn.stdpath("config") .. "/snippets" },
       })
-
-      -- Thêm snippet cho C#
-      -- ls.add_snippets("cs", {
-      --   s("summary", {
-      --     t("/// <summary>"),
-      --     t({ "", "/// " }),
-      --     i(1, "Description of the method/class."),
-      --     t({ "", "/// </summary>" }),
-      --     t({ "", "" }),
-      --     i(0),
-      --   }),
-      -- })
-      -- Cấu hình nvim-cmp
+      dofile(vim.fn.stdpath("config") .. "/snippets/csharp.lua")
     end,
-  },
-  {
-    "garymjr/nvim-snippets",
     keys = {
       {
         "<Tab>",
         function()
+          local ls = require("luasnip")
+          if ls.expand_or_locally_jumpable() then
+            ls.expand_or_jump()
+            return
+          end
           if vim.snippet.active({ direction = 1 }) then
             vim.schedule(function()
               vim.snippet.jump(1)
@@ -60,6 +36,11 @@ local snippets = {
       {
         "<Tab>",
         function()
+          local ls = require("luasnip")
+          if ls.jumpable(1) then
+            ls.jump(1)
+            return
+          end
           vim.schedule(function()
             vim.snippet.jump(1)
           end)
@@ -71,6 +52,11 @@ local snippets = {
       {
         "<S-Tab>",
         function()
+          local ls = require("luasnip")
+          if ls.jumpable(-1) then
+            ls.jump(-1)
+            return
+          end
           if vim.snippet.active({ direction = -1 }) then
             vim.schedule(function()
               vim.snippet.jump(-1)
@@ -86,4 +72,3 @@ local snippets = {
     },
   },
 }
-return { snippets }

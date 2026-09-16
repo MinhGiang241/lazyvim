@@ -109,4 +109,4 @@ require("mason").setup({
   },
 })
 vim.env.CC = "gcc"
-require("nvim-treesitter.install").compilers = { "gcc", "clang" }
+-- require("nvim-treesitter.install").compilers = { "gcc", "clang" }

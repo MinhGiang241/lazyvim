@@ -12,6 +12,19 @@
     "prefix": "pu",
     "body": ["public"],
     "description": "public"
+  },
+  "AsyncMethod": {
+    "prefix": "asyncm",
+    "body": [
+      "public async Task<${1:Result}> ${2:MethodName}Async(${3})",
+      "{",
+      "    ${4}",
+      "}"
+    ]
+  },
+  "XML Summary": {
+    "prefix": ["doc", "sum"],
+    "body": ["/// <summary>", "/// $1", "/// </summary>"],
+    "description": "Insert C# XML Summary comment"
   }
 }
-

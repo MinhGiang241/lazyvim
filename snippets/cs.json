@@ -7,5 +7,10 @@
       "    ${4}",
       "}"
     ]
+  },
+  "XML Summary": {
+    "prefix": ["doc", "sum"],
+    "body": ["/// <summary>", "/// $1", "/// </summary>"],
+    "description": "Insert C# XML Summary comment"
   }
 }

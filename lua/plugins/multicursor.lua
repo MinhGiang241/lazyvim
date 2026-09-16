@@ -10,12 +10,12 @@ return {
     local set = vim.keymap.set
 
     -- Thêm con trỏ lên/xuống (Normal / Visual mode)
-    set({ "n", "v" }, "<C-Up>", function()
-      mc.lineSkipCursor(-1)
-    end)
-    set({ "n", "v" }, "<C-Down>", function()
-      mc.lineSkipCursor(1)
-    end)
+    -- set({ "n", "v" }, "<C-Up>", function()
+    --   mc.lineSkipCursor(-1)
+    -- end)
+    -- set({ "n", "v" }, "<C-Down>", function()
+    --   mc.lineSkipCursor(1)
+    -- end)
     set({ "n", "v" }, "<leader><Up>", function()
       mc.lineAddCursor(-1)
     end)
@@ -24,7 +24,7 @@ return {
     end)
 
     -- Chọn từ dưới con trỏ (Giống Ctrl+D trong VS Code)
-    set({ "n", "v" }, "<C-d>", function()
+    set({ "n", "v" }, "<C-Down>", function()
       mc.matchAddCursor(1)
     end)
     set({ "n", "v" }, "<leader>s", function()
